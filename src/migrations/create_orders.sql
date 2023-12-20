@@ -15,7 +15,5 @@ order_status VARCHAR(50) DEFAULT 'Pending' NOT NULL,
 order_details VARCHAR(200),
 created_on TIMESTAMP NOT NULL,
 updated_on TIMESTAMP NOT NULL,
-PRIMARY KEY (user_id, order_id),
-FOREIGN KEY (order_id)
-    REFERENCES orders_req (id)
+PRIMARY KEY (user_id, order_id)
 );

@@ -8,9 +8,12 @@ const client = new Client({
 })
 
 client.connect().then(() => {
+  console.log('Client', { client })  
   client.query('SELECT NOW()', (err, res) => {
     console.log(res.rows)
   })
+}).catch((error) => {
+    console.log('Error connecting to DB',{ error })
 })
 
-export default client
+export default client 

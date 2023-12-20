@@ -1,6 +1,6 @@
 import KoaRouter from '@koa/router'
 
-var router = new KoaRouter({
+const router = new KoaRouter({
   prefix: '/health-check'
 })
 

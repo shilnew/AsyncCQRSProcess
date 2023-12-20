@@ -4,7 +4,7 @@ import { jwtValidation } from './middleware'
 import { ProcessRequestController, GetStatusController } from '../controllers'
 import joi from 'joi'
 
-var router = new KoaRouter({
+const router = new KoaRouter({
   prefix: '/orders'
 })
 router.use(jwtValidation)

@@ -19,6 +19,7 @@
   "homepage": "https://github.com/shilnew/AsyncCQRSProcess#readme",
   "dependencies": {
     "@koa/router": "^10.0.0",
+    "amqplib": "^0.10.3",
     "joi": "^17.11.0",
     "koa": "^2.14.2",
     "koa-bodyparser": "4.3.0",
