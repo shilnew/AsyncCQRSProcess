@@ -2,9 +2,12 @@
 ```
 Simple way to demonstrate CQRS (Command Query Responsibility Separation) to separate the 
 command side (write operations) from the query side (read operations) of the system.
-Taking Order processing in a basic sense, this app stubs out the backend part having
+Taking Order processing as an example, this app stubs out the backend service with
 2 Rest API endpoints - POST and GET.
-The POST `/orders` endpoint just registers the order in the `order_req` db table, after some validations. Then the message is published to RabbitMQ where the consumer acks the message and processes it. All this happens asyncronously to help process multiple orders faster (scaling).
+The POST `/orders` endpoint just registers the order in the `order_req` db table, 
+after some validations. Then the message is published to RabbitMQ where the consumer acks 
+the message and processes it. All this happens asyncronously to help process multiple orders 
+faster (helps with scaling).
 The processing of the order + status is stored in a separate table `orders`.
 The GET `/orders/:orderId` endpoint queries this `orders` table and posts the response to the calling client.
 ```
