@@ -20,6 +20,7 @@ You'll need node installed, preferable version 12 or later.
 npm i
 docker-compose up -d
 npm run dev
+docker-compose up -d
 ```
 To test if it's running properly:
 ```
