@@ -19,9 +19,9 @@ router.post('/',
   }),
   async (ctx) => {
     const { itemCode, quantity, payment } = ctx.request.body
-    const token = await ProcessRequestController.createTokenAndPublish(itemCode, quantity, payment)
+    const orderId = await ProcessRequestController.createTokenAndPublish(itemCode, quantity, payment)
     ctx.status = 201
-    ctx.body = { orderId: token }
+    ctx.body = { orderId }
 })
 
 router.get('/:orderId', async (ctx) => {

@@ -3,10 +3,16 @@ import { OrdersRepository } from '../models'
 
 const queue = 'order_queue'
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms))
+}
+
 async function processMessage(data) {
     const orderStatus = 'Received'
     console.log('DATA', { data })
     await OrdersRepository.createOrders(data.userId, data.orderId, orderStatus)
+    await sleep(10 * 1000) // 10 secs
+    await OrdersRepository.updateOrdersStatus(data.userId, data.orderId, 'Completed')
 }
 
 const consumer = async () => {

@@ -20,7 +20,7 @@ const createOrdersReq = async (userId, itemCode, quantity, payment) => {
         console.log('Error during save', { error })
         throw error
     }
-    return results.rows
+    return results?.rows
 }
 
 const createOrders = async (userId, orderId, orderStatus) => {
@@ -40,8 +40,25 @@ const createOrders = async (userId, orderId, orderStatus) => {
     return results?.rows
 }
 
+const updateOrdersStatus = async (userId, orderId, orderStatus) => {
+    let results
+    try {
+        results = await client.query(
+            `UPDATE ORDERS 
+            SET order_status = $3
+            WHERE order_id = $2 AND user_id = $1`,
+            [userId, orderId, orderStatus])
+        console.log('Orders updated', { results })
+    } catch (error) {
+        console.log('Error during update', { error })
+        throw error
+    }
+    return results?.rows
+}
+
 export default {
     getOrderById,
     createOrdersReq,
     createOrders,
+    updateOrdersStatus,
 }
