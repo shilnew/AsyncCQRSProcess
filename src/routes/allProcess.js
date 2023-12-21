@@ -12,9 +12,9 @@ router.use(jwtValidation)
 router.post('/', 
   validate({
     body: {
-      itemCode: joi.string().required,
-      quantity: joi.number().required,
-      payment: joi.string().required
+      itemCode: joi.string().required(),
+      quantity: joi.number().required(),
+      payment: joi.string().required()
     },
   }),
   async (ctx) => {

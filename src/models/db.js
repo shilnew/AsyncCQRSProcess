@@ -8,7 +8,6 @@ const client = new Client({
 })
 
 client.connect().then(() => {
-  console.log('Client', { client })  
   client.query('SELECT NOW()', (err, res) => {
     console.log(res.rows)
   })
